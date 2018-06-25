@@ -1,6 +1,6 @@
-![logo](submit.svg)
-
 # Submit
+
+![logo](submit.svg)
 
 A little command-line tool which helps reduce manual work for content creators.
 
