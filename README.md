@@ -44,7 +44,7 @@ For example, to submit a link to Reddit, run
 submit reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
 ```
 
-### Currentyl supported platforms
+### Currently supported platforms
 
 * [X] Reddit
 * [ ] Patreon
