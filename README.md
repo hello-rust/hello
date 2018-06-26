@@ -13,7 +13,7 @@ takes away a substantial amount of time from actually creating content.
 You might say that this is not an important problem to solve - and I agree to
 some extent. But having a side-project next to work is a tough thing to handle
 and every little step that can be automated saves some time for more important
-things like... uhm... family and friends?
+things like... uhm... friends and family?
 
 You might say that this is cheating - and you might be right. Submitting an
 article is a soulless work of honor that should be done manually as a sign of *respect* (yo)
