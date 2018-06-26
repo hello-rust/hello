@@ -7,21 +7,21 @@ A little command-line tool which helps reduce manual work for content creators.
 ### Why?
 
 Social media is hard. On one side, you would like to keep all platforms updated
-and share your creations with the world. On the other side maintaining them
+and share your creations with the world. On the other side maintaining all of them
 takes away a substantial amount of time from actually creating content.
 
 You might say that this is not an important problem to solve - and I agree to
 some extent. But having a side-project next to work is a tough thing to handle
 and every little step that can be automated saves some time for more important
-things like family and friends.
+things like... uhm... family and friends?
 
 You might say that this is cheating - and you might be right. Submitting an
-article is a soulless work of honor should be done manually as a sign of respect
-to your audience. But guess what: most of your audience cares about your
-_content_ and not about your link submission on social media.
+article is a soulless work of honor that should be done manually as a sign of *respect* (yo)
+to your audience. But guess what: most of your audience 
+doesn't care about your link on social media, it cares about your _content_.
 
-You might say there are better tools - and that's true. There's buffer, which
-can do everything that this tool can and better. But I want a free tool under a
+You might say there are better tools - and that's true. There's [Buffer](https://buffer.com/), which
+can do everything that this tool can, but better. Nevertheless, the goal is to build a free tool under a
 permissive license that is easy to hack on.
 
 Therefore I created **submit**.
