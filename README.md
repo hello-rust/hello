@@ -47,8 +47,8 @@ submit reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxr
 ### Currently supported platforms
 
 * [X] Reddit
+* [X] Twitter
 * [ ] Patreon
-* [ ] Twitter
 * [ ] Discourse
 * [ ] HackerNews
 * [ ] Bring your own!
