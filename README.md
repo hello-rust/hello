@@ -53,6 +53,18 @@ submit reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxr
 * [ ] HackerNews
 * [ ] Bring your own!
 
+### How to get your credentials
+
+##### Reddit
+
+Create an app at reddit.com/prefs/apps.
+
+##### Twitter
+
+Make an app for yourself at apps.twitter.com.
+On first execution of `submit`, you will get an access token via OAuth.
+Follow the instructions on the screen to save that for all subsequent requests.
+
 ### Contributing
 
 This tool was made possible by the awesome patrons of ["Hello
