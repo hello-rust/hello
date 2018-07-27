@@ -1,6 +1,4 @@
-# Submit
-
-![logo](submit.svg)
+# 👋 Hello
 
 A little command-line tool which helps reduce manual work for content creators.
 Why?
@@ -25,7 +23,7 @@ better. Nevertheless, the goal is to build a free tool under a permissive
 license that is easy to hack on.
 
 
-Therefore I created **submit**.
+Therefore I created **hello**.
 
 ### Installation
 
@@ -37,11 +35,11 @@ cargo install
 
 Create a `.env` file with your credentials. See `.env_dist` for an example.
 
-After that, run `submit -h` to get started.
+After that, run `hello -h` to get started.
 
 For example, to submit a link to Reddit, run
 ```
-submit reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
+hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
 ```
 
 ### Currently supported platforms
@@ -58,12 +56,25 @@ submit reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxr
 ##### Reddit
 
 Create an app at reddit.com/prefs/apps.
+After that, add your credentials to `.env`.
+Then you can run `hello` like so:
+
+```
+reddit yoursubredditname "I gave up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
+```
 
 ##### Twitter
 
-Make an app for yourself at apps.twitter.com. On first execution of `submit`,
-you will get an access token via OAuth. Follow the instructions on the screen to
-save that for all subsequent requests.
+Make an app for yourself at apps.twitter.com. On first execution of `hello`,
+you will get an access token via OAuth.
+
+Then run the following command to send a tweet:
+
+```
+hello twitter "Hello! https://github.com/hello-rust/hello"
+```
+
+Follow the instructions on the screen to save that for all subsequent requests.
 
 ### Contributing
 

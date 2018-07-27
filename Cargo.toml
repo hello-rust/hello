@@ -1,5 +1,5 @@
 [package]
-name = "submit"
+name = "hello"
 version = "0.1.0"
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
 
@@ -10,4 +10,5 @@ dotenv = "0.13.0"
 dotenv_codegen = "0.11.0"
 structopt = "0.2.10"
 egg-mode = "0.12.0"
+rustc-serialize = "0.3.24"
 tokio-core = "0.1.17"

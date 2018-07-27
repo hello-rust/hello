@@ -74,7 +74,7 @@ impl Client {
     }
 
     pub fn submit(&self, text: String) -> Result<(), Error> {
-        let mut core = Core::new().unwrap();
+        let mut core = Core::new()?;
         let handle = core.handle();
 
         let draft = DraftTweet::new(text);

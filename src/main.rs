@@ -6,6 +6,7 @@ extern crate dotenv;
 extern crate egg_mode;
 extern crate failure;
 extern crate rawr;
+extern crate rustc_serialize;
 extern crate tokio_core;
 
 mod platforms;
@@ -16,11 +17,10 @@ use dotenv::dotenv;
 use failure::Error;
 use structopt::StructOpt;
 
-use platforms::reddit;
-use platforms::twitter;
+use platforms::*;
 
 #[derive(StructOpt)]
-#[structopt(name = "submit", about = "Share on social platforms")]
+#[structopt(name = "hello", about = "Share on social platforms")]
 enum App {
     #[structopt(name = "reddit")]
     Reddit {
