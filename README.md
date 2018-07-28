@@ -49,7 +49,7 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 * [X] Twitter
 * [X] HackerNews
 * [ ] Patreon (tough one, as the API does not support publishing yet)
-* [ ] Discourse (tough one, as the only admins can get an API key)
+* [ ] Discourse (tough one, as only admins can get an API key)
 * [ ] Bring your own!
 
 ### How to get your credentials
