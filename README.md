@@ -82,8 +82,7 @@ Follow the instructions on the screen to save that for all subsequent requests.
 Since HackerNews doesn't have an API for submitting links, we have to be
 creative.
 We use the awesome [fantoccini](https://github.com/jonhoo/fantoccini) to control
-a browser using a
-[WebDriver](https://github.com/Fyrd/caniuse/issues/2757#issuecomment-304529217)
+a [WebDriver](https://github.com/Fyrd/caniuse/issues/2757#issuecomment-304529217)
 compatible browser.
 
 1. Install geckodriver by fetching the [latest build from their release page](https://github.com/mozilla/geckodriver/releases).
