@@ -1,7 +1,8 @@
 # 👋 hello
 
-A little command-line tool which helps reduce manual work for content creators.
-Why?
+A little command-line tool which helps reduce manual work for content creators.  
+
+### Why?
 
 Social media is hard. On one side, you would like to keep all platforms updated
 and share your creations with the world. On the other hand, maintaining all of
