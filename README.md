@@ -47,9 +47,9 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 
 * [X] Reddit
 * [X] Twitter
+* [X] HackerNews
 * [ ] Patreon (tough one, as the API does not support publishing yet)
 * [ ] Discourse (tough one, as the only admins can get an API key)
-* [ ] HackerNews (tough one, as there is no API)
 * [ ] Bring your own!
 
 ### How to get your credentials
@@ -76,6 +76,24 @@ hello twitter "Hello! https://github.com/hello-rust/hello"
 ```
 
 Follow the instructions on the screen to save that for all subsequent requests.
+
+#### HackerNews
+
+Since HackerNews doesn't have an API for submitting links, we have to be
+creative.
+We use the awesome [fantoccini](https://github.com/jonhoo/fantoccini) to control
+a browser using a
+[WebDriver](https://github.com/Fyrd/caniuse/issues/2757#issuecomment-304529217)
+compatible browser.
+
+1. Install geckodriver by fetching the [latest build from their release page](https://github.com/mozilla/geckodriver/releases).
+2. Add your HN credentials to `.env`.
+
+Example:
+
+```
+hello hn "Show HN: Hello, a CLI tool for managing social media" https://github.com/hello-rust/hello
+```
 
 ### Contributing
 

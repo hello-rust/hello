@@ -5,6 +5,8 @@ extern crate dotenv_codegen;
 extern crate dotenv;
 extern crate egg_mode;
 extern crate failure;
+extern crate fantoccini;
+extern crate futures;
 extern crate rawr;
 extern crate rustc_serialize;
 extern crate tokio_core;
@@ -22,6 +24,8 @@ use platforms::*;
 #[derive(StructOpt)]
 #[structopt(name = "hello", about = "Share on social platforms")]
 enum App {
+    #[structopt(name = "hn")]
+    Hackernews { title: String, url: String },
     #[structopt(name = "reddit")]
     Reddit {
         subreddit: String,
@@ -38,6 +42,15 @@ fn main() -> Result<(), Error> {
     // TODO: This should be done with inversion of control
     let app = App::from_args();
     match app {
+        App::Hackernews { title, url } => {
+            let credentials = hackernews::Credentials {
+                username: env::var("HN_USERNAME")?,
+                password: env::var("HN_PASSWORD")?,
+            };
+
+            let client = hackernews::Client::new(credentials);
+            client.submit(title, url)
+        }
         App::Reddit {
             subreddit,
             title,
