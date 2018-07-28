@@ -85,8 +85,3 @@ MIT/Apache license.
 
 [Become a patron](https://www.patreon.com/bePatron?c=1568097) now to support
 future work and send pull requests for supporting other platforms.
-
-### Credits
-
-Logo made by [Google](https://www.flaticon.com/authors/google) under Ceative
-Commons BY 3.0.
