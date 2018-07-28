@@ -1,4 +1,4 @@
-# 👋 Hello
+# 👋 hello
 
 A little command-line tool which helps reduce manual work for content creators.
 Why?
