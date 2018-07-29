@@ -2,9 +2,10 @@
 extern crate structopt;
 #[macro_use]
 extern crate dotenv_codegen;
+#[macro_use]
+extern crate failure;
 extern crate dotenv;
 extern crate egg_mode;
-extern crate failure;
 extern crate fantoccini;
 extern crate futures;
 extern crate rawr;

@@ -1,6 +1,7 @@
 use failure::Error;
 use fantoccini::{Client as FantocciniClient, Locator};
 use futures::future::Future;
+use std::process::Command;
 use tokio_core;
 
 pub struct Credentials {
@@ -18,6 +19,10 @@ impl Client {
     }
 
     pub fn submit(&self, title: String, url: String) -> Result<(), Error> {
+        Command::new("geckodriver")
+            .spawn()
+            .map_err(|e| format_err!("{:?}: Cannot start geckodriver. Did you install it?", e))?;
+
         let mut core = tokio_core::reactor::Core::new()?;
         let c = FantocciniClient::new("http://localhost:4444", &core.handle());
         let c = core.run(c)?;
