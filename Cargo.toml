@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
 
 [dependencies]
-rawr = "0.1.1"
+rawr = { git = "https://github.com/GyrosOfWar/rawr" }
 failure = "0.1.1"
 dotenv = "0.13.0"
 dotenv_codegen = "0.11.0"
@@ -14,3 +14,6 @@ rustc-serialize = "0.3.24"
 tokio-core = "0.1.17"
 fantoccini = "0.10.0"
 futures = "0.1.23"
+reqwest = "0.8.6"
+openssl = "0.10.10"
+rand = "0.5.4"

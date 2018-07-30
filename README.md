@@ -48,8 +48,8 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 * [X] Reddit
 * [X] Twitter
 * [X] HackerNews
+* [X] Discourse
 * [ ] Patreon (tough one, as the API does not support publishing yet)
-* [ ] Discourse (tough one, as only admins can get an API key)
 * [ ] Bring your own!
 
 ### How to get your credentials
@@ -93,6 +93,22 @@ Example:
 ```
 hello hn "Show HN: Hello, a CLI tool for managing social media" https://github.com/hello-rust/hello
 ```
+
+##### Discourse
+
+Add the URL to the Discourse forum to your `.env` file, e.g.:
+
+```
+DISCOURSE_BASE_URL=https://users.rust-lang.org
+```
+
+After that, make your first request:
+
+```
+hello discourse "Post title" "Raw post content as **Markdown**."
+```
+
+Follow the instructions on the screen to save credentials for all subsequent requests.
 
 ### Contributing
 

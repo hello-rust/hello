@@ -8,7 +8,10 @@ extern crate dotenv;
 extern crate egg_mode;
 extern crate fantoccini;
 extern crate futures;
+extern crate openssl;
+extern crate rand;
 extern crate rawr;
+extern crate reqwest;
 extern crate rustc_serialize;
 extern crate tokio_core;
 
@@ -25,14 +28,23 @@ use platforms::*;
 #[derive(StructOpt)]
 #[structopt(name = "hello", about = "Share on social platforms")]
 enum App {
+    /// Post to Discourse
+    #[structopt(name = "discourse")]
+    Discourse { topic: String, content: String },
+
+    /// Post to HackerNews
     #[structopt(name = "hn")]
     Hackernews { title: String, url: String },
+
+    /// Post to Reddit
     #[structopt(name = "reddit")]
     Reddit {
         subreddit: String,
         title: String,
         url: String,
     },
+
+    /// Post to Twitter
     #[structopt(name = "twitter")]
     Twitter { text: String },
 }
@@ -43,6 +55,23 @@ fn main() -> Result<(), Error> {
     // TODO: This should be done with inversion of control
     let app = App::from_args();
     match app {
+        App::Discourse { topic, content } => {
+            let base_url = dotenv!("DISCOURSE_BASE_URL").to_string();
+            let credentials = match (
+                env::var("DISCOURSE_API_KEY"),
+                env::var("DISCOURSE_API_USERNAME"),
+            ) {
+                // Already registered
+                (Ok(api_key), Ok(api_username)) => {
+                    discourse::Credentials::new(api_key, api_username)
+                }
+                // Not registered yet. Requires authentication
+                _ => discourse::Credentials::load(base_url)?,
+            };
+
+            let client = discourse::Client::new(credentials);
+            client.submit(topic, content)
+        }
         App::Hackernews { title, url } => {
             let credentials = hackernews::Credentials {
                 username: env::var("HN_USERNAME")?,
@@ -81,7 +110,7 @@ fn main() -> Result<(), Error> {
                     access_token_key,
                     access_token_secret,
                 ),
-                // Not registerd yet. Requires OAuth dance
+                // Not registered yet. Requires OAuth dance
                 _ => twitter::Credentials::load(consumer_key, consumer_secret)?,
             };
 
