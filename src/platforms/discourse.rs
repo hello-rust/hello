@@ -35,7 +35,7 @@ impl Credentials {
         }
 
         let auth_redirect = "discourse://auth_redirect";
-        let app_name = "Discourse TUI";
+        let app_name = "Hello Rust";
         let public_key: String;
         let keypair: Rsa<Private>;
         match Rsa::generate(2048) {
