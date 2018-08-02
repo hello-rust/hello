@@ -50,6 +50,7 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 * [X] HackerNews
 * [X] Discourse
 * [ ] Patreon (tough one, as the API does not support publishing yet)
+* [ ] Slack
 * [ ] Bring your own!
 
 ### How to get your credentials
