@@ -62,7 +62,7 @@ After that, add your credentials to `.env`.
 Then you can run `hello` like so:
 
 ```
-reddit yoursubredditname "I gave up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
+hello reddit yoursubredditname "I gave up" "https://www.youtube.com/watch?v=DLzxrzFCyOs"
 ```
 
 ##### Twitter
