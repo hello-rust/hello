@@ -1,9 +1,11 @@
-use failure::Error;
+use failure::{err_msg, Error};
 use openssl::pkey::Private;
 use openssl::rsa::Rsa;
-use rand::{thread_rng, RngCore};
+use rand::{self, RngCore};
 use reqwest;
+use std::env::current_exe;
 use std::fmt::Write;
+use system_uri;
 
 pub struct Credentials {
     pub api_key: String,
@@ -18,8 +20,41 @@ impl Credentials {
         }
     }
 
-    fn gen_key_url(base_url: String) -> Result<String, String> {
-        let mut rng = thread_rng();
+    fn register_schema(schema: String) -> Result<(), Error> {
+        let rng = rand::thread_rng();
+        let exec = String::from(current_exe()?.to_str().ok_or(err_msg(
+            "Cannot retrieve filesystem path to the `hello` executable",
+        ))?);
+        let app = system_uri::App::new(
+            "de.matthias-endler.hello".to_string(),
+            "Matthias Endler".to_string(),
+            "Hello Rust".to_string(),
+            exec,
+            None,
+        );
+
+        println!("Installing ourselves under {}", schema);
+
+        system_uri::install(&app, &[schema.clone()]).map_err(|e| {
+            format_err!(
+                "Cannot install system uri handler for discourse schema: {}",
+                e,
+            )
+        })?;
+
+        println!("Trying to open {}test", schema);
+        system_uri::open(format!("{}test", schema)).map_err(|e| {
+            format_err!(
+                "Cannot open test URI using discourse system uri handler: {}",
+                e,
+            )
+        })?;
+        println!("Open succeeded 😄, everything is fine 🎉!");
+        Ok(())
+    }
+
+    fn get_auth_url(base_url: String) -> Result<String, String> {
+        let mut rng = rand::thread_rng();
         let scopes = "read,write";
         let mut client_id_bytes = [0u8; 16];
         rng.fill_bytes(&mut client_id_bytes);
@@ -78,15 +113,24 @@ impl Credentials {
         Ok(req_url)
     }
 
-    /// If we don't have an access token already, try to register.
-    pub fn load(base_url: String) -> Result<Credentials, Error> {
-        let url = Credentials::gen_key_url(base_url)
+    fn register(base_url: String) -> Result<(), Error> {
+        Credentials::register_schema("discourse://".to_string())?;
+        let url = Credentials::get_auth_url(base_url)
             .map_err(|e| format_err!("Cannot retrieve Discourse API URL: {:?}", e))?;
+        system_uri::open(url.clone())
+            .map_err(|e| format_err!("Cannot open discourse API URI: {}", e))?;
 
         println!(
-            "Go to this URL to retrieve your Discourse credentials: {}",
+            "Click on this URL to retrieve your Discourse credentials: {}",
             url
         );
+        Ok(())
+    }
+
+    /// If we don't have an access token already, try to register.
+    pub fn load(base_url: String) -> Result<Credentials, Error> {
+        Credentials::register(base_url)?;
+
         let api_key = String::from("dummy");
         let api_username = String::from("dummy");
         Ok(Credentials {

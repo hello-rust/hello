@@ -13,6 +13,7 @@ extern crate rand;
 extern crate rawr;
 extern crate reqwest;
 extern crate rustc_serialize;
+extern crate system_uri;
 extern crate tokio_core;
 
 mod platforms;
