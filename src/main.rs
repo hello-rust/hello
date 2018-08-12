@@ -1,6 +1,5 @@
 #[macro_use]
 extern crate structopt;
-#[macro_use]
 extern crate dotenv_codegen;
 #[macro_use]
 extern crate failure;
@@ -10,6 +9,7 @@ extern crate fantoccini;
 extern crate futures;
 extern crate rawr;
 extern crate rustc_serialize;
+extern crate slack_api;
 extern crate tokio_core;
 
 mod platforms;
@@ -35,6 +35,8 @@ enum App {
     },
     #[structopt(name = "twitter")]
     Twitter { text: String },
+    #[structopt(name = "slack")]
+    Slack { channel: String, text: String },
 }
 
 fn main() -> Result<(), Error> {
@@ -68,8 +70,8 @@ fn main() -> Result<(), Error> {
             client.submit(subreddit, title, url)
         }
         App::Twitter { text } => {
-            let consumer_key = dotenv!("TWITTER_CONSUMER_KEY").to_string();
-            let consumer_secret = dotenv!("TWITTER_CONSUMER_SECRET").to_string();
+            let consumer_key = env::var("TWITTER_CONSUMER_KEY")?.to_string();
+            let consumer_secret = env::var("TWITTER_CONSUMER_SECRET")?.to_string();
             let credentials = match (
                 env::var("TWITTER_ACCESS_KEY"),
                 env::var("TWITTER_ACCESS_SECRET"),
@@ -87,6 +89,12 @@ fn main() -> Result<(), Error> {
 
             let client = twitter::Client::new(credentials);
             client.submit(text)
+        }
+        App::Slack { channel, text } => {
+            let token = env::var("SLACK_TOKEN")?.to_string();
+            let credentials = slack::Credentials { token };
+            let client = slack::Client::new(credentials);
+            client.submit(channel, text)
         }
     }
 }
