@@ -29,7 +29,7 @@ Therefore I created **hello**.
 ### Installation
 
 ```
-cargo install
+cargo install hello-rs
 ```
 
 ### Usage

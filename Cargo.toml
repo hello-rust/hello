@@ -1,5 +1,5 @@
 [package]
-name = "hello"
+name = "hello-rs"
 description = "A command-line tool to submit links to various social platforms"
 documentation = "https://github.com/hello-rust/hello"
 homepage = "https://github.com/hello-rust/hello"
@@ -8,7 +8,7 @@ version = "0.1.0"
 authors = ["Matthias Endler <matthias-endler@gmx.net>"]
 
 [dependencies]
-rawr = { path = "rawr", version="0.2.0" }
+rawr = { path = "rawr", version="0.1.1" }
 failure = "0.1.2"
 dotenv = "0.13.0"
 dotenv_codegen = "0.11.0"
