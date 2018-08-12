@@ -48,9 +48,9 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 * [X] Reddit
 * [X] Twitter
 * [X] HackerNews
+* [X] Slack
 * [ ] Patreon (tough one, as the API does not support publishing yet)
 * [ ] Discourse (tough one, as only admins can get an API key)
-* [ ] Slack
 * [ ] Bring your own!
 
 ### How to get your credentials
@@ -67,8 +67,9 @@ hello reddit yoursubredditname "I gave up" "https://www.youtube.com/watch?v=DLzx
 
 ##### Twitter
 
-Make an app for yourself at apps.twitter.com. On first execution of `hello`,
-you will get an access token via OAuth.
+Make an app for yourself at apps.twitter.com and add the credentials to the
+`.env` file. On first execution of `hello`,
+you will get an access token for your app via OAuth.
 
 Then run the following command to send a tweet:
 
@@ -77,6 +78,32 @@ hello twitter "Hello! https://github.com/hello-rust/hello"
 ```
 
 Follow the instructions on the screen to save that for all subsequent requests.
+
+##### Slack
+
+Create an app at https://api.slack.com/apps.
+The app name doesn't matter. Choose the workspace that you want to send messages
+to.
+
+Click on "create". You will be redirected to the configuration page where you
+click on "permissions".
+
+Look for "scopes" and select one of the following:
+
+* `chat:write:user` if you want `hello` to send messages using your Slack username.
+* `chat:write:bot` if you want `hello` to send messages using the app username.
+
+At the top, you should see your `OAuth` token, which you have to store in the
+`.env` file of `hello`. If you don't see your token, you might have to click on
+"request approval" to be allowed to install the app into the selected workspace.
+
+That's all you need. Save everything. 
+
+Run the following command to send a message to `your-channel-name`:
+
+```
+hello slack "your-channel-name" "Hello! https://github.com/hello-rust/hello"
+```
 
 #### HackerNews
 
