@@ -50,6 +50,7 @@ hello reddit subredditnamehere "Give up" "https://www.youtube.com/watch?v=DLzxrz
 * [X] HackerNews
 * [X] Slack
 * [ ] Patreon (tough one, as the API does not support publishing yet)
+* [ ] Meetup.com
 * [ ] Discourse (tough one, as only admins can get an API key)
 * [ ] Bring your own!
 
