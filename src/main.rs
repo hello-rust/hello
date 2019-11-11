@@ -1,6 +1,5 @@
-#[macro_use]
-extern crate structopt;
 extern crate dotenv_codegen;
+extern crate structopt;
 #[macro_use]
 extern crate failure;
 extern crate dotenv;
